@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: cyberrisk-probability-api-bex040598
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cyberrisk-probability-db-bex040598
+          property: connectionString
+      - key: CYBERRISK_SECRET_KEY
+        generateValue: true
+      - key: CYBERRISK_CORS_ORIGINS
+        value: https://cyberrisk-probability-web-bex040598.onrender.com
+
+  - type: web
+    name: cyberrisk-probability-web-bex040598
+    runtime: static
+    plan: free
+    buildCommand: npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: CYBERRISK_API_BASE
+        value: https://cyberrisk-probability-api-bex040598.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+databases:
+  - name: cyberrisk-probability-db-bex040598
+    plan: free

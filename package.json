@@ -1,0 +1,12 @@
+{
+  "name": "cyberrisk-probability-assessment-platform",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node frontend/scripts/build.mjs",
+    "build:render": "node frontend/scripts/build.mjs",
+    "serve": "node frontend/scripts/serve.mjs",
+    "dev": "node frontend/scripts/serve.mjs"
+  }
+}
