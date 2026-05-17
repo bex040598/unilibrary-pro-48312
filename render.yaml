@@ -20,7 +20,7 @@ services:
     runtime: static
     plan: free
     buildCommand: npm run build
-    staticPublishPath: frontend/dist
+    staticPublishPath: dist
     envVars:
       - key: CYBERRISK_API_BASE
         value: https://cyberrisk-probability-api-bex040598.onrender.com

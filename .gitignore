@@ -11,6 +11,7 @@ venv/
 cyberrisk.db
 migration_test.db
 frontend/dist/
+dist/
 node_modules/
 .DS_Store
 Thumbs.db
